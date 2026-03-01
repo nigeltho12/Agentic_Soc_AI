@@ -6,73 +6,38 @@
 
 ## 📌 Purpose
 
-This module defines how the AI agent interprets investigation prompts and generates structured, deterministic security analysis.
+This module focuses on **prompt design** and **output structure** for an AI-assisted SOC workflow.
 
-The focus is on:
+It explores how to:
 
-- Controlling LLM behavior
-- Reducing hallucination
-- Enforcing SOC-style report formatting
-- Maintaining reasoning boundaries
-- Simulating analyst thought processes
-
----
-
-## 🏗️ Role in the System
-User Prompt
-→
-Prompt Management
-→
-Model Invocation
-→
-Structured Output
-
-
-This layer acts as the translation engine between:
-
-- Human-style investigation requests  
-- Structured security analysis  
-- Deterministic LLM responses  
+- Control model behavior
+- Reduce hallucination risk
+- Enforce SOC-style reporting formats
+- Keep responses deterministic and scannable
 
 ---
 
-## 📂 Components
+## 🧩 What's Here
 
-| File | Responsibility |
-|------|---------------|
-| `PROMPT_MANAGEMENT.py` | Defines system prompts and structured formatting |
-| `MODEL_MANAGEMENT.py` | Handles OpenAI API interaction |
-| `EXECUTOR.py` | Orchestrates execution logic |
-| `UTILITIES.py` | Shared helper functions |
-| `__main__.py` | Entry point for local testing |
-
----
-
-## 🔐 Security Considerations
-
-- System prompts restrict unsafe or non-SOC outputs
-- Structured formatting reduces ambiguous responses
-- Temperature settings minimize variability
-- Response templates enforce deterministic output
+- `PROMPT_MANAGEMENT.py` — system prompts + formatting templates  
+- `MODEL_MANAGEMENT.py` — LLM client + request construction  
+- `EXECUTOR.py` — orchestration of the workflow  
+- `UTILITIES.py` — helper functions  
+- `GUARDRAILS.py` — basic constraints/validation
+- `threats.jsonl` — reference dataset used by the workflow  
+- `config.py` — loads secrets from environment
 
 ---
 
-## 🎯 Engineering Focus
+## ▶️ Run
 
-This module demonstrates:
-
-- Controlled prompt design
-- Role separation (System / User context)
-- Structured output enforcement
-- LLM workflow orchestration
-- Applied detection engineering logic
+```bash
+python prompt_engineering/__main__.py
+```
 
 ---
 
-## 🚀 Future Enhancements
+## 🔐 Notes
 
-- Structured JSON output enforcement
-- Confidence scoring logic
-- Automated MITRE ATT&CK tagging
-- Threat severity normalization
-- Injection pattern detection pre-filtering
+- Configure secrets using `.env` at repo root.
+- See `.env.example` for the required variables.
