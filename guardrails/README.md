@@ -6,87 +6,39 @@
 
 ## 📌 Purpose
 
-The Guardrails module enforces boundaries on AI-generated outputs to prevent:
+This module focuses on **guardrails** for AI outputs in a security context.
 
-- Hallucinated threat classifications
-- Unsafe remediation suggestions
-- Unstructured reports
-- Prompt injection manipulation
-- Inconsistent severity scoring
+It explores patterns used to:
 
-This models how production AI security systems must be constrained to operate safely.
-
----
-
-## 🏗️ Role in the System
-
-Prompt Layer
-→
-Guardrails Layer
-→
-Executor
-→
-LLM
-→
-Validated Response
-
-
-The guardrails layer sits between the prompt logic and final output validation.
+- Enforce output structure
+- Bound threat classification
+- Reduce unsafe recommendations
+- Mitigate prompt injection attempts
+- Keep SOC outputs consistent
 
 ---
 
-## 📂 Components
+## 🧩 What's Here
 
-| File | Responsibility |
-|------|---------------|
-| `GUARDRAILS.py` | Output validation & enforcement rules |
-| `threats.jsonl` | Threat reference dataset |
-| `PROMPT_MANAGEMENT.py` | Controlled prompt logic |
-| `MODEL_MANAGEMENT.py` | LLM API interface |
-| `EXECUTOR.py` | Execution flow control |
-| `UTILITIES.py` | Shared functions |
-
----
-
-## 🔍 Enforcement Mechanisms
-
-- Output format validation
-- Threat classification boundaries
-- Controlled decision-making logic
-- Mitigation recommendation structure
-- Prompt injection resistance checks
+- `GUARDRAILS.py` — enforcement/validation logic  
+- `PROMPT_MANAGEMENT.py` — controlled prompt templates  
+- `MODEL_MANAGEMENT.py` — model invocation helpers  
+- `EXECUTOR.py` — execution flow control  
+- `UTILITIES.py` — shared helpers  
+- `threats.jsonl` — reference dataset  
+- `config.py` — loads secrets from environment
 
 ---
 
-## 🔐 Security Modeling
+## ▶️ Run
 
-This module demonstrates:
-
-- Deterministic LLM constraint patterns
-- Defensive prompt layering
-- Structured threat evaluation
-- AI safety implementation patterns
-- SOC automation governance concepts
+```bash
+python guardrails/__main__.py
+```
 
 ---
 
-## 🎯 Why Guardrails Matter
+## 🔐 Notes
 
-Without enforcement layers:
-
-- AI agents may hallucinate severity
-- Suggest unsafe remediation steps
-- Drift outside security scope
-- Be manipulated via injection attempts
-
-Guardrails ensure operational integrity in AI-assisted SOC environments.
-
----
-
-## 🚀 Future Enhancements
-
-- Regex-based injection detection
-- Severity scoring normalization engine
-- Automated threat taxonomy enforcement
-- Confidence-level modeling
-- Multi-layer response verification
+- Configure secrets using `.env` at repo root.
+- See `.env.example` for the required variables.
